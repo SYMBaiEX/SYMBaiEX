@@ -16,6 +16,14 @@ export const CharacterChat: React.FC<CharacterChatProps> = ({ character }) => {
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([]);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const chatSectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToChat = useCallback(() => {
+    chatSectionRef.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }, []);
 
   // Clear messages when character changes
   useEffect(() => {
@@ -115,10 +123,15 @@ IMPORTANT: Always stay in character and respond as ${character.name}. Use the st
   }
 
   return (
-    <div className="w-full flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20">
+    <div ref={chatSectionRef} className="w-full flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20">
       {/* Header */}
       <div className="flex items-center gap-2 p-3 border-b border-pink-500/30 bg-black/40">
-        <span className="text-cyan-400 font-mono text-sm">Chat with {character.name}</span>
+        <button 
+          onClick={scrollToChat}
+          className="text-cyan-400 hover:text-cyan-300 transition-colors font-mono text-sm"
+        >
+          Chat with {character.name}
+        </button>
       </div>
 
       {/* Chat Messages */}

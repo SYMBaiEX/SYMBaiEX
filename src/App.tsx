@@ -65,13 +65,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen min-w-full text-white overflow-x-hidden">
       <Background />
       <Navigation 
         activeSection={activeSection}
         onNavigate={handleNavigate}
       />
-      <main className="pt-16 px-4 pb-4">
+      <main className="pt-16 px-4 pb-4 min-h-screen">
         <div className="max-w-5xl mx-auto flex items-center justify-center min-h-[calc(100vh-6rem)]">
           <Routes>
             <Route path="/*" element={renderContent()} />

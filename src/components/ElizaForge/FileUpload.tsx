@@ -12,6 +12,9 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    
+    // Clear existing character first
+    onUpload(null);
 
     try {
       const text = await file.text();
@@ -55,7 +58,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
         }
       });
 
-      onUpload(baseCharacter as Character);
+      // Set new character in next tick
+      setTimeout(() => onUpload(character), 0);
     } catch (error) {
       console.error('Failed to parse character file:', error);
       alert('Invalid character file format. Please check the file and try again.');

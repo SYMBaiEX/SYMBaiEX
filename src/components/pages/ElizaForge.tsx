@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Terminal as TerminalIcon, Power, Download, FileJson, History } from 'lucide-react';
 import { FileUpload } from '../ElizaForge/FileUpload';
 import { UsernameDisplay } from '../Terminal/components/UsernameDisplay';
@@ -35,7 +35,8 @@ export const ElizaForge: React.FC = () => {
   React.useEffect(() => {
     const state = location.state as { character?: Character };
     if (state?.character) {
-      setCharacterData(state.character);
+      setCharacterData(null); // Clear first
+      setTimeout(() => setCharacterData(state.character), 0);
       // Clear the state to prevent reloading on subsequent navigations
       navigate(location.pathname, { replace: true, state: {} });
     }
@@ -43,7 +44,7 @@ export const ElizaForge: React.FC = () => {
   
   return (
     <div className="w-full">
-      <div className="flex flex-col lg:flex-row gap-4 max-w-full">
+      <div className="flex flex-col lg:flex-row gap-4 max-w-full relative">
         {/* Terminal Section */}
         <div className={`${isMobile ? 'w-full h-[350px] lg:h-[600px]' : 'w-1/2 h-[600px]'} flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20`}>
           {/* Header */}
@@ -129,7 +130,7 @@ export const ElizaForge: React.FC = () => {
       </div>
       
       {/* Chat Section */}
-      <div className="mt-4">
+      <div className="mt-4 mb-8">
         <CharacterChat character={characterData} />
       </div>
       
@@ -137,7 +138,8 @@ export const ElizaForge: React.FC = () => {
 
       {/* Username Popup */}
       {showUsernameInput && (
-        <UsernamePopup
+        <div className="fixed inset-0 z-[60]" onClick={(e) => e.stopPropagation()}>
+          <UsernamePopup
           value={usernameInput}
           onChange={setUsernameInput}
           onSubmit={() => {
@@ -151,7 +153,7 @@ export const ElizaForge: React.FC = () => {
             setShowUsernameInput(false);
             setUsernameInput('');
           }}
-        />
+        /></div>
       )}
     </div>
   );

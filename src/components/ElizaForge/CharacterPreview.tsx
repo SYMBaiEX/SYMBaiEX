@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { History } from 'lucide-react';
 import { useIsMobile } from '../../hooks/useIsMobile';
-import { Character } from '../../types/eliza';
+import type { Character } from '../../types/eliza';
 import { useDropzone } from '../../hooks/useDropzone';
 import { EditableField } from './EditableField';
 import { EditableArray } from './EditableArray';
@@ -10,7 +10,7 @@ import { EditableMessageExamples } from './EditableMessageExamples';
 
 interface CharacterPreviewProps {
   data: Character | null;
-  onChange?: (data: Character) => void;
+  onChange: (data: Character | null) => void;
 }
 
 export const CharacterPreview: React.FC<CharacterPreviewProps> = ({ 
@@ -28,7 +28,9 @@ export const CharacterPreview: React.FC<CharacterPreviewProps> = ({
       const text = await file.text();
       const character = JSON.parse(text);
       if (onChange) {
-        onChange(character);
+        // Reset state completely with new character
+        onChange(null);
+        setTimeout(() => onChange(character), 0);
       }
     } catch (error) {
       console.error('Failed to parse character file:', error);

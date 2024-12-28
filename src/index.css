@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 html, body {
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .terminal-output::-webkit-scrollbar,
