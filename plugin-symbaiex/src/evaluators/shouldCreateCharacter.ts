@@ -1,4 +1,4 @@
-import { Evaluator, Message } from '../types/eliza';
+import { Evaluator, Message } from '../types';
 import { CREATION_PATTERNS } from '../utils/characterParser';
 
 export const shouldCreateCharacter: Evaluator = async (message: Message): Promise<boolean> => {

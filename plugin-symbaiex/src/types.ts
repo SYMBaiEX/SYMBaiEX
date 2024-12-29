@@ -1,43 +1,49 @@
-// Core types
-export interface SYMBaiEXConfig {
-  apiKey: string;
-  baseUrl?: string;
-  wsUrl?: string;
-  maxRetries?: number;
-  timeout?: number;
+export interface Message {
+  content: string;
+  metadata?: Record<string, any>;
 }
 
-export interface RateLimitConfig {
-  maxRequests: number;
-  windowMs: number;
+export interface ActionContext {
+  message: string;
+  metadata?: {
+    apiKey?: string;
+    baseUrl?: string;
+    [key: string]: any;
+  };
 }
 
-// API Response types
-export interface APIResponse<T = any> {
+export interface ActionResult {
   success: boolean;
-  data?: T;
+  data?: any;
   error?: string;
 }
 
-// Chat types
-export interface ChatMessage {
-  agentId: string;
-  message: string;
-  userId?: string;
+export interface Action {
+  (context: ActionContext): Promise<ActionResult>;
 }
 
-export interface ChatResponse {
-  message: string;
-  timestamp: number;
-  conversationId: string;
+export interface Evaluator {
+  (message: Message): Promise<boolean>;
 }
 
-// Identity types
-export interface AgentIdentity {
-  id: string;
+export interface CharacterRequest {
   name: string;
-  handle: string;
-  createdAt: number;
-  lastSeen: number;
-  source: string;
+  bio: string[];
+  lore: string[];
+  messageExamples?: Array<[
+    { user: string; content: { text: string } },
+    { user: string; content: { text: string } }
+  ]>;
+  style?: {
+    all: string[];
+    chat: string[];
+    post: string[];
+  };
+  topics?: string[];
+  adjectives?: string[];
+  settings?: {
+    voice?: {
+      model?: string;
+    };
+  };
 }

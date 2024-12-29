@@ -1,46 +1,55 @@
-import type { Plugin as ElizaPlugin, Message as ElizaMessage } from './types/eliza';
+import type { Message } from './types';
 import { parseCharacterRequest } from './utils/characterParser';
-import { galadrielAPI } from './services/ai/galadriel';
 import { RateLimiter } from './utils/RateLimiter';
 
-export class SYMBaiEXPlugin implements ElizaPlugin {
-  private forgeLimiter: RateLimiter;
+export class SYMBaiEXPlugin {
+  name = 'symbaiex';
+  description = 'SYMBaiEX integration plugin for Eliza framework';
 
-  constructor() {
-    // Initialize forge-specific rate limiter
+  private readonly apiKey: string;
+  private readonly baseUrl: string;
+  private readonly forgeLimiter: RateLimiter;
+
+  constructor(apiKey: string, baseUrl?: string) {
+    this.apiKey = apiKey;
+    this.baseUrl = baseUrl || 'https://api.symbaiex.com/v1';
     this.forgeLimiter = new RateLimiter({
       maxRequests: 5,
       windowMs: 20 * 60 * 1000 // 20 minutes
     }, 'forge_rate_limit');
   }
 
-  async onMessage(message: ElizaMessage): Promise<string | undefined> {
-    const request = parseCharacterRequest(message.content);
-    if (!request) return;
-
+  async onMessage(message: Message): Promise<string | undefined> {
     try {
+      const request = parseCharacterRequest(message.content);
+      if (!request) return;
+
       if (!this.forgeLimiter.canMakeRequest()) {
         const timeLeft = this.forgeLimiter.getTimeUntilReset();
         return `Rate limit exceeded. Try again in ${Math.ceil(timeLeft / 60000)} minutes.`;
       }
 
       // Generate character using Galadriel
-      const response = await galadrielAPI.chat('character', JSON.stringify(request), {
-        model: 'llama3.1:70b',
-        temperature: 0.1,
-        maxTokens: 2000
+      const response = await fetch(`${this.baseUrl}/api/character/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.apiKey}`
+        },
+        body: JSON.stringify(request)
       });
 
-      this.forgeLimiter.incrementRequests();
-
-      if (!response.message) {
-        throw new Error('No response received from AI');
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create character');
       }
 
-      return response.message;
+      const data = await response.json();
+      this.forgeLimiter.incrementRequests();
+      return data.markdownLink;
     } catch (error) {
-      console.error('Character creation error:', error);
-      return error instanceof Error ? error.message : 'Failed to create character';
+      console.error('Plugin error:', error);
+      return error instanceof Error ? error.message : 'Unknown error occurred';
     }
   }
 }

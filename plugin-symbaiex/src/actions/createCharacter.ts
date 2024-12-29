@@ -1,26 +1,10 @@
-import { Action, ActionContext, ActionResult } from '../types/eliza';
+import { Action, ActionContext, ActionResult } from '../types';
 import { parseCharacterRequest } from '../utils/characterParser';
-import { galadrielAPI } from '../services/ai/galadriel';
-import { RateLimiter } from '../utils/RateLimiter';
-
-// Create forge-specific rate limiter
-const forgeLimiter = new RateLimiter({
-  maxRequests: 5,
-  windowMs: 20 * 60 * 1000 // 20 minutes
-}, 'forge_rate_limit');
 
 export const createCharacter: Action = async (
   context: ActionContext
 ): Promise<ActionResult> => {
   try {
-    if (!forgeLimiter.canMakeRequest()) {
-      const timeLeft = forgeLimiter.getTimeUntilReset();
-      return {
-        success: false,
-        error: `Rate limit exceeded. Try again in ${Math.ceil(timeLeft / 60000)} minutes.`
-      };
-    }
-
     const request = parseCharacterRequest(context.message);
     if (!request) {
       return {
@@ -29,12 +13,27 @@ export const createCharacter: Action = async (
       };
     }
 
-    const character = await galadrielAPI.chat('character', JSON.stringify(request));
-    forgeLimiter.incrementRequests();
+    // Send character creation request to SYMBaiEX API
+    const response = await fetch(`${context.metadata?.baseUrl}/api/character/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${context.metadata?.apiKey}`
+      },
+      body: JSON.stringify(request)
+    });
 
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to create character');
+    }
+
+    const data = await response.json();
     return {
       success: true,
-      data: character
+      data: {
+        markdownLink: data.markdownLink
+      }
     };
   } catch (error) {
     return {
