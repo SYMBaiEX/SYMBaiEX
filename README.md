@@ -257,4 +257,4 @@ pnpm run preview
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details
+MIT License
