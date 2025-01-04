@@ -7,6 +7,9 @@ export const API_ENDPOINTS = {
   AGENTS: '/api/agents',
   AGENT_PROFILE: '/api/agents/:id',
   
+  // Character creation
+  CHARACTER_CREATE: '/api/character/create',
+  
   // System endpoints
   SYSTEM_STATUS: '/api/system/status',
   SYSTEM_METRICS: '/api/system/metrics',

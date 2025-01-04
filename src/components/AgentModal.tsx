@@ -91,12 +91,6 @@ export const AgentModal: React.FC<AgentModalProps> = ({ character, onClose }) =>
     }
   };
 
-  const handleUsernameKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && usernameInput.trim()) {
-      handleSetUsername();
-    }
-  };
-
   const shortenAddress = (address: string) => {
     return `${address.slice(0, 4)}...${address.slice(-4)}`;
   };

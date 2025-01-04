@@ -66,7 +66,8 @@ export class Database implements IDatabase {
 
     const newMemory = {
       id: this.memories.length + 1,
-      ...memory
+      ...memory,
+      role: memory.role as 'user' | 'assistant'
     };
     
     this.memories.push(newMemory);

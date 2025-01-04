@@ -81,10 +81,10 @@ export interface Section {
   title: string;
   content: {
     type: 'text' | 'structured';
-    lines?: Array<string | { label?: string; value?: string } | { type: 'list'; items?: string[] }>;
+    lines?: Array<string | { label?: string; value?: string } | { type: 'list'; items: string[] }>;
     sections?: {
       heading?: string;
-      items?: { number: number; text: string }[];
+      items?: { number: string; text: string }[];
       text?: string[];
       value?: string;
       commands?: { command: string; description: string }[];

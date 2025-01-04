@@ -2,7 +2,6 @@ import React from 'react';
 import { Plus, X } from 'lucide-react';
 import { EditableField } from './EditableField';
 import { MessageExample } from '../../types/eliza';
-import { userService } from '../../services/user';
 
 interface EditableMessageExamplesProps {
   examples: MessageExample[][];

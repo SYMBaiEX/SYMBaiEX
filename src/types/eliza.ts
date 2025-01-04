@@ -166,3 +166,20 @@ export interface Character {
     prompt: string;
   };
 }
+
+export interface CharacterRequest {
+  name: string;
+  bio: string[];
+  lore: string[];
+  messageExamples?: Array<[
+    { user: string; content: { text: string } },
+    { user: string; content: { text: string } }
+  ]>;
+  style?: {
+    all: string[];
+    chat: string[];
+    post: string[];
+  };
+  topics?: string[];
+  adjectives?: string[];
+}

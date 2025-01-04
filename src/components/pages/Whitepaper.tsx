@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal as TerminalIcon, Power, Download, ExternalLink, FileCode } from 'lucide-react';
+import { Terminal as TerminalIcon, Power, FileCode } from 'lucide-react';
 import { SocialLinks } from '../SocialLinks';
 import { UsernameDisplay } from '../Terminal/components/UsernameDisplay';
 import { UsernamePopup } from '../Terminal/components/UsernamePopup';

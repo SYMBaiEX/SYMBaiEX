@@ -11,17 +11,6 @@ import { Whitepaper } from './components/pages/Whitepaper';
 import { Docs } from './components/pages/Docs';
 import { Logs } from './components/pages/Logs';
 
-const routes = [
-  { path: '/', element: 'home' },
-  { path: '/manifesto', element: 'manifesto' },
-  { path: '/terminal', element: 'terminal' },
-  { path: '/characters', element: 'characters' },
-  { path: '/elizaforge', element: 'elizaforge' },
-  { path: '/symx', element: 'symx' },
-  { path: '/logs', element: 'logs' },
-  { path: '/whitepaper', element: 'whitepaper' },
-  { path: '/docs', element: 'docs' }
-];
 import { ElizaForge } from './components/pages/ElizaForge';
 
 const App: React.FC = () => {
@@ -65,13 +54,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen min-w-full text-white overflow-x-hidden">
+    <div className="min-h-screen text-white">
       <Background />
       <Navigation 
         activeSection={activeSection}
         onNavigate={handleNavigate}
       />
-      <main className="pt-16 px-4 pb-4 min-h-screen">
+      <main className="pt-16 px-4 pb-4">
         <div className="max-w-5xl mx-auto flex items-center justify-center min-h-[calc(100vh-6rem)]">
           <Routes>
             <Route path="/*" element={renderContent()} />

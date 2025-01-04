@@ -173,10 +173,10 @@ export const docs: Category[] = [
             {
               heading: 'System Access',
               items: [
-                { number: 1, text: 'Access the terminal using the navigation menu' },
-                { number: 2, text: 'Type "symx help" to see available commands' },
-                { number: 3, text: 'Use "symx list" to view available agents' },
-                { number: 4, text: 'Start chatting with "symx chat <agent>"' }
+                { number: '1', text: 'Access the terminal using the navigation menu' },
+                { number: '2', text: 'Type "symx help" to see available commands' },
+                { number: '3', text: 'Use "symx list" to view available agents' },
+                { number: '4', text: 'Start chatting with "symx chat <agent>"' }
               ]
             },
             {

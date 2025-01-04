@@ -1,4 +1,4 @@
-import { Character } from '../types';
+import { Character } from '../types/eliza';
 
 /**
  * Get random items from an array

@@ -8,37 +8,29 @@ export class RateLimiter {
   private readonly maxRequests: number;
   private readonly windowMs: number;
   private readonly storageKey: string;
-  private lastReset: number;
+  private readonly prefix = 'symx_';
 
   constructor(config: RateLimiterConfig, storageKey?: string) {
     this.maxRequests = config.maxRequests;
     this.windowMs = config.windowMs;
-    this.storageKey = storageKey || 'rate_limit_requests';
-    this.lastReset = Date.now();
+    this.storageKey = `${this.prefix}${storageKey || 'rate_limit_requests'}`;
     this.loadFromStorage();
   }
 
   private loadFromStorage(): void {
     try {
       const stored = localStorage.getItem(this.storageKey);
-      if (stored) { 
-        const data = JSON.parse(stored);
-        this.requests = data.requests || [];
-        this.lastReset = data.lastReset || Date.now();
-      }
+      this.requests = stored ? JSON.parse(stored) : [];
+      this.clearOldRequests();
     } catch (error) {
       console.error('Failed to load rate limit data:', error);
       this.requests = [];
-      this.lastReset = Date.now();
     }
   }
 
   private saveToStorage(): void {
     try {
-      localStorage.setItem(this.storageKey, JSON.stringify({
-        requests: this.requests,
-        lastReset: this.lastReset
-      }));
+      localStorage.setItem(this.storageKey, JSON.stringify(this.requests));
     } catch (error) {
       console.error('Failed to save rate limit data:', error);
     }
@@ -68,10 +60,12 @@ export class RateLimiter {
 
   private clearOldRequests(): void {
     const now = Date.now();
-    if (now - this.lastReset >= this.windowMs) {
-      this.requests = [];
-      this.lastReset = now;
-    }
+    this.requests = this.requests.filter(time => now - time < this.windowMs);
     this.saveToStorage();
+  }
+
+  clear(): void {
+    this.requests = [];
+    localStorage.removeItem(this.storageKey);
   }
 }

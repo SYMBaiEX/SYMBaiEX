@@ -13,11 +13,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "plugin-symbaiex", "client-terminal"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "plugin-symbaiex"]
 }

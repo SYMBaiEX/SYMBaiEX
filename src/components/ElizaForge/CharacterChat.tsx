@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Send } from 'lucide-react';
 import { Character } from '../../types/eliza';
-import { TerminalOutput } from '../Terminal/components/TerminalOutput';
 import { TerminalLoading } from '../Terminal/components/TerminalLoading';
 import { getRandomItems } from '../../utils/arrays';
 import { galadrielAPI } from '../../services/ai/galadriel';
@@ -16,14 +15,6 @@ export const CharacterChat: React.FC<CharacterChatProps> = ({ character }) => {
   const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([]);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const chatSectionRef = useRef<HTMLDivElement>(null);
-
-  const scrollToChat = useCallback(() => {
-    chatSectionRef.current?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }, []);
 
   // Clear messages when character changes
   useEffect(() => {
@@ -43,15 +34,8 @@ export const CharacterChat: React.FC<CharacterChatProps> = ({ character }) => {
     if (!character) return;
 
     // Ensure we're using Galadriel as the provider
-    const enhancedCharacter = {
-      ...character,
-      modelProvider: 'galadriel',
-      model: 'llama3.1:70b'
-    };
-
     // Get random elements from character data
     const styles = getRandomItems([...character.style.all, ...character.style.chat], 3);
-    const topics = getRandomItems(character.topics, 2);
     const traits = getRandomItems(character.adjectives, 2);
     const loreItems = getRandomItems(character.lore, 2);
     const bioItems = Array.isArray(character.bio) ? getRandomItems(character.bio, 2) : [character.bio];
@@ -123,15 +107,10 @@ IMPORTANT: Always stay in character and respond as ${character.name}. Use the st
   }
 
   return (
-    <div ref={chatSectionRef} className="w-full flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20">
+    <div className="w-full flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20">
       {/* Header */}
       <div className="flex items-center gap-2 p-3 border-b border-pink-500/30 bg-black/40">
-        <button 
-          onClick={scrollToChat}
-          className="text-cyan-400 hover:text-cyan-300 transition-colors font-mono text-sm"
-        >
-          Chat with {character.name}
-        </button>
+        <span className="text-cyan-400 font-mono text-sm">Chat with {character.name}</span>
       </div>
 
       {/* Chat Messages */}
