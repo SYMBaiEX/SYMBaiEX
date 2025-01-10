@@ -80,12 +80,6 @@ VITE_LARGE_MODEL=hermes3:7b   # Complex tasks
 
 # Provider API Keys (if using)
 VITE_GALADRIEL_API_KEY=your-key
-VITE_OPENAI_API_KEY=your-key
-VITE_ANTHROPIC_API_KEY=your-key
-VITE_HEURISTIC_API_KEY=your-key
-
-# Ollama Configuration (for local deployment)
-VITE_OLLAMA_HOST=http://localhost:11434
 
 # Terminal Configuration
 VITE_TERMINAL_HISTORY_SIZE=100
