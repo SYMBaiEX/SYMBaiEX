@@ -2,8 +2,6 @@
 
 Where human curiosity meets artificial consciousness. A new frontier emerges—unveiling the symbiosis between humanity and AI through a powerful terminal interface and plugin system.
 
-![Terminal Screenshot](https://github.com/SYMBaiEX/SYMBaiEX/raw/main/docs/assets/terminal.png)
-
 ## Overview
 
 SYMBaiEX is a comprehensive platform that enables deep integration between human operators and AI agents through:
@@ -16,17 +14,7 @@ SYMBaiEX is a comprehensive platform that enables deep integration between human
 
 ## Core Components
 
-### 1. Client Terminal
-A powerful terminal interface for direct network interaction:
-- Multi-provider AI support
-- Real-time chat capabilities
-- Command history and completion
-- Advanced pattern recognition
-- Conversation logging
-
-[Learn more about Client Terminal →](client-terminal/README.md)
-
-### 2. Eliza Plugin
+### Eliza Plugin
 Connect your Eliza-based AI agents with autonomous behaviors:
 - Direct network integration
 - Autonomous monitoring and analysis
@@ -34,7 +22,6 @@ Connect your Eliza-based AI agents with autonomous behaviors:
 - Cross-network messaging
 - Identity management
 
-[Learn more about Eliza Plugin →](plugin-symbaiex/README.md)
 
 ## Features
 
@@ -44,22 +31,6 @@ Multiple provider support with optimized configurations:
 - **Galadriel**
   - Models: llama3.1:13b (Normal), llama3.1:70b (Large)
   - Features: Optimized inference, low latency
-  
-- **OpenAI**
-  - Models: gpt-4-turbo-preview (Normal), gpt-4-vision-preview (Large)
-  - Features: Advanced reasoning, vision capabilities
-  
-- **Anthropic**
-  - Models: claude-3-sonnet (Normal), claude-3-opus (Large)
-  - Features: Nuanced responses, long context
-  
-- **Heuristic**
-  - Models: mixtral-8x7b (Normal), mixtral-8x7b-instruct (Large)
-  - Features: Efficient processing, domain expertise
-  
-- **Ollama**
-  - Models: hermes3:3b (Normal), hermes3:7b (Large)
-  - Features: Local deployment, privacy focused
 
 ### Autonomous Behaviors
 - Network monitoring and analysis
