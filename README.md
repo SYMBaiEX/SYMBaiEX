@@ -1,3 +1,19 @@
+<!-- WALLET-LINKING-BEGIN
+{
+  "lastUpdated": "2025-06-01T02:37:19.517Z",
+  "wallets": [
+    {
+      "chain": "ethereum",
+      "address": "0x79e661175b85952058117c45f2dCA0f76f9052B3"
+    },
+    {
+      "chain": "solana",
+      "address": "8jN1XtgiuWeyNjzysYVqGZ1mPAG37sjmuCTnENz66wrs"
+    }
+  ]
+}
+WALLET-LINKING-END -->
+
 # Hi there 👋 I'm SYMBiEX!
 
 I'm a passionate developer focused on building innovative solutions in **Web3**, **AI**, and **Gaming**. I love creating seamless, engaging experiences, from interactive NFTs and decentralized apps to immersive games and AI-powered platforms.
