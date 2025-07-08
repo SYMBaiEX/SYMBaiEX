@@ -133,29 +133,6 @@ Scalable, streamlined, and market-ready:
 
 ---
 
-## 🌱 **Currently Leveling Up**
-
-<div align="center">
-  
-  ```yaml
-  learning_journey:
-    blockchain:
-      - "Advanced Smart Contract Security 🔒"
-      - "ZK Proofs & Compression 🧮"
-      - "Cross-chain Interoperability 🌉"
-    ai:
-      - "Large Language Models 🧠"
-      - "Multi-modal AI Systems 👁️"
-      - "Distributed AI Networks 🕸️"
-    gaming:
-      - "Unreal Engine 5 🎮"
-      - "Procedural Generation 🎲"
-      - "Real-time Multiplayer 🌐"
-  ```
-  
-</div>
-
----
 
 
 ## 🤝 **Let's Connect & Collaborate!**
