@@ -43,8 +43,8 @@ Hey there! I'm a passionate developer living at the intersection of **Web3**, **
 
 <div align="center">
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMBaiEX&theme=tokyonight&hide_border=true)](https://github.com/symbiex/solana-nft-marketplace)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMindX&theme=tokyonight&hide_border=true)](https://github.com/symbiex/ai-powered-gaming)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMBaiEX&theme=tokyonight&hide_border=true)](https://github.com/symbiex/symbaiex)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMindX&theme=tokyonight&hide_border=true)](https://github.com/symbiex/symindx)
 
 </div>
 
