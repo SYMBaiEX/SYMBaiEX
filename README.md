@@ -22,7 +22,7 @@ WALLET-LINKING-END -->
   ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00F7FF&center=true&vCenter=true&width=600&lines=Web3+Developer+%F0%9F%94%97;AI+Engineer+%F0%9F%A4%96;Game+Creator+%F0%9F%8E%AE;Innovation+Catalyst+%E2%9A%A1)
   
   ![Profile Views](https://komarev.com/ghpvc/?username=symbaiex&color=blueviolet&style=flat-square&label=Profile+Views)
-  [![GitHub followers](https://img.shields.io/github/followers/symbaiex?style=social)](https://github.com/symbiex)
+  [![GitHub followers](https://img.shields.io/github/followers/symbaiex?style=social)](https://github.com/symbaiex)
   [![Twitter Follow](https://img.shields.io/twitter/follow/symbiex?style=social)](https://twitter.com/symbiex)
   
 </div>
@@ -43,8 +43,8 @@ Hey there! I'm a passionate developer living at the intersection of **Web3**, **
 
 <div align="center">
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMBaiEX&theme=tokyonight&hide_border=true)](https://github.com/symbiex/symbaiex)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMindX&theme=tokyonight&hide_border=true)](https://github.com/symbiex/symindx)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMBaiEX&theme=tokyonight&hide_border=true)](https://github.com/symbaiex/symbaiex)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMindX&theme=tokyonight&hide_border=true)](https://github.com/symbaiex/symindx)
 
 </div>
 
