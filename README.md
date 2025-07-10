@@ -16,7 +16,9 @@ WALLET-LINKING-END -->
 <div align="center">
  <h1>👾 SYMBiEX 👾</h1>
 <h2>*Building the Future, One Line of Code at a Time*</h2>
-[![Tip in Crypto](https://tip.md/badge.svg)](https://tip.md/SYMBaiEX)
+  <a href="https://tip.md/SYMBaiEX">
+    <img src="https://tip.md/badge.svg" alt="Tip in Crypto" />
+  </a>
 <div align="center">
   
   ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00F7FF&center=true&vCenter=true&width=600&lines=Web3+Developer+%F0%9F%94%97;AI+Engineer+%F0%9F%A4%96;Game+Creator+%F0%9F%8E%AE;Innovation+Catalyst+%E2%9A%A1)
