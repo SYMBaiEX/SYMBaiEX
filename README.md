@@ -36,8 +36,9 @@ WALLET-LINKING-END -->
 
 Hey there! I'm a passionate developer living at the intersection of **Web3**, **AI**, and **Gaming**. I don't just write code—I craft experiences that push boundaries and redefine what's possible in the digital realm.
 
-[![Symbaiex's GitHub stats](https://github-readme-streak-stats.vercel.app/?user=symbaiex&theme=tokyonight&hide_border=true)]
-
+<div align="center">
+  ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Symbaiex&show_icons=true&theme=dark)
+</div>
 
 ## 🌟 **Featured Projects**
 
