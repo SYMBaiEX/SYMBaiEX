@@ -123,11 +123,6 @@ WALLET-LINKING-END -->
 </tr>
 </table>
 
-<br/>
-
-[![SYMBaiEX](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMBaiEX&hide_border=true&title_color=FF2D78&icon_color=F7931A&text_color=c9d1d9&bg_color=0d0d0d)](https://github.com/symbaiex/symbaiex)
-[![SYMindX](https://github-readme-stats.vercel.app/api/pin/?username=symbaiex&repo=SYMindX&hide_border=true&title_color=00F7FF&icon_color=FF2D78&text_color=c9d1d9&bg_color=0d0d0d)](https://github.com/symbaiex/symindx)
-
 </div>
 
 ---
