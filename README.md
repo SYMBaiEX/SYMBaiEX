@@ -57,21 +57,6 @@ WALLET-LINKING-END -->
 
 ---
 
-## ◈ SYSTEM IDENTITY
-
-```
-╔══════════════════════════════════════════════════════════════════════╗
-║  DESIGNATION  │  SYMBaiEX  ·  SYMBiEX  ·  Alakadev                 ║
-║  ROLE         │  AI Engineer  ·  Web3 Architect  ·  Game Creator     ║
-║  AFFILIATION  │  elizaOS  ·  HyperscapeAI  ·  SYMBiEX               ║
-║  STACK        │  TypeScript  ·  Bun  ·  Solana  ·  ElizaOS           ║
-║  STATUS       │  ▓▓▓▓▓▓▓▓▓▓  ONLINE  ·  BUILDING                   ║
-║  DIRECTIVE    │  Build the future. One line of code at a time.        ║
-╚══════════════════════════════════════════════════════════════════════╝
-```
-
----
-
 ## ◈ FEATURED PROJECTS
 
 <div align="center">
