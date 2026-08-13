@@ -13,6 +13,9 @@
   ]
 }
 WALLET-LINKING-END -->
+
+<!-- gitarmy-wallet:v1 {"chain":"solana","address":"DkEjgLSHrMZagMkNtSekzF2335g8q7wMJq1VeZc5DR5n"} -->
+
 <div align="center"> 
 
 <img src="https://capsule-render.vercel.app/api?type=venom&height=220&text=SYMBaiEX&fontSize=90&color=0,00F7FF,FF2D78,F7931A&stroke=00F7FF&strokeWidth=2&animation=fadeIn&fontColor=00F7FF&fontAlignY=52&desc=◈%20WHERE%20THOUGHT%20BECOMES%20CODE%20◈&descSize=13&descAlignY=72&descColor=FF2D78" />
