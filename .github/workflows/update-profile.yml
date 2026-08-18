@@ -1,4 +1,4 @@
-name: Update profile activity cards
+name: Update profile metrics
 
 on:
   workflow_dispatch:
@@ -18,44 +18,50 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Refresh original-style activity cards
+      - name: Refresh original profile cards
         shell: bash
         run: |
           set -u
           mkdir -p profile
 
           fetch_card() {
-            local url="$1"
-            local dest="$2"
-            local tmp="${dest}.tmp"
-            echo "Refreshing ${dest}"
-            if curl --fail --location --silent --show-error --retry 3 --retry-delay 3 --max-time 60 "$url" -o "$tmp"; then
-              if grep -qi '<svg' "$tmp"; then
-                mv "$tmp" "$dest"
-                echo "Updated ${dest}"
-              else
-                echo "Response was not SVG; keeping previous ${dest}"
-                rm -f "$tmp"
+            url="$1"
+            dest="$2"
+            tmp="${dest}.tmp"
+            ok=0
+
+            for attempt in 1 2 3 4 5; do
+              if curl -L --fail --silent --show-error --max-time 45 "$url" -o "$tmp"; then
+                if grep -qi '<svg' "$tmp"; then
+                  mv "$tmp" "$dest"
+                  echo "Updated $dest"
+                  ok=1
+                  break
+                fi
               fi
-            else
-              echo "Renderer unavailable; keeping previous ${dest}"
               rm -f "$tmp"
+              sleep $((attempt * 4))
+            done
+
+            if [ "$ok" -eq 0 ]; then
+              if [ -s "$dest" ]; then
+                echo "Renderer unavailable; preserving existing $dest"
+              else
+                echo "Renderer unavailable and no cached $dest exists yet"
+              fi
             fi
           }
 
           fetch_card 'https://github-readme-stats.vercel.app/api?username=symbaiex&show_icons=true&hide_border=true&title_color=00F7FF&icon_color=FF2D78&text_color=c9d1d9&bg_color=0d0d0d&count_private=true&include_all_commits=true' 'profile/stats.svg'
-
           fetch_card 'https://github-readme-stats.vercel.app/api/top-langs/?username=symbaiex&layout=compact&hide_border=true&title_color=F7931A&text_color=c9d1d9&bg_color=0d0d0d&count_private=true&langs_count=8' 'profile/languages.svg'
-
           fetch_card 'https://github-readme-streak-stats.herokuapp.com/?user=symbaiex&hide_border=true&stroke=1a1a2e&ring=FF2D78&fire=F7931A&currStreakLabel=00F7FF&sideLabels=FF2D78&sideNums=ffffff&currStreakNum=ffffff&dates=666666&background=0d0d0d' 'profile/streak.svg'
-
           fetch_card 'https://github-readme-activity-graph.vercel.app/graph?username=symbaiex&theme=tokyo-night&hide_border=true&color=00F7FF&line=FF2D78&point=F7931A&bg_color=0d0d0d&area=true&area_color=00F7FF' 'profile/activity-graph.svg'
 
       - name: Commit refreshed cards
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add profile/*.svg
+          git add profile/*.svg 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -m 'chore: refresh profile activity cards'
           git push
