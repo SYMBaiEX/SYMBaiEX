@@ -15,7 +15,7 @@ WALLET-LINKING-END -->
 ### AI Software Engineer · Agent Systems · Full-Stack Product Builder
 <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&size=15&duration=3200&pause=900&color=00F7FF&center=true&vCenter=true&width=760&lines=Building+production+AI+systems;Contributing+to+elizaOS;Agents+%E2%80%A2+Full-stack+%E2%80%A2+Realtime+systems+%E2%80%A2+Developer+tooling;Turning+ambitious+ideas+into+working+software" />
 <br/>
-<img src="https://komarev.com/ghpvc/?username=symbaiex-profile-views-v2&amp;base=3916&amp;label=VISITORS&amp;color=FF2D78&amp;style=flat-square" alt="Profile views" />
+<a href="https://hits.sh/github.com/symbaiex-profile-views/"><img alt="Profile views" src="https://hits.sh/github.com/symbaiex-profile-views.svg?style=flat-square&amp;label=VISITORS&amp;extraCount=3916&amp;color=FF2D78&amp;labelColor=0d0d0d" /></a>
 <a href="https://github.com/symbaiex"><img src="https://img.shields.io/github/followers/symbaiex?style=flat-square&color=00F7FF&labelColor=0d0d0d&label=NETWORK" alt="GitHub followers" /></a>
 <a href="https://x.com/symbiex"><img src="https://img.shields.io/badge/@SYMBiEX-F7931A?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
 <a href="https://symbaiex.com"><img src="https://img.shields.io/badge/symbaiex.com-FF2D78?style=flat-square&logoColor=white" alt="Website" /></a>
@@ -69,7 +69,7 @@ Developer experience
 ### 🎮 Hyperscape
 AI-native MMORPG experimentation for humans and autonomous agents.
 
-[![Repository](https://img.shields.io/badge/HyperscapeAI%2Fhyperscape-REPOSITORY-FF2D78?style=for-the-badge&logo=github&logoColor=white)](https://github.com/HyperscapeAI/hyperscape)
+[![Repository](https://img.shields.io/badge/HyperscapeAI%2Fhyperscape-REPOSITORY-FF2D78?style=for-the-badge&logo=github&logoColor=white&labelColor=0d0d0d)](https://github.com/HyperscapeAI/hyperscape)
 ```text
 Autonomous game agents
 Realtime world systems
@@ -83,7 +83,7 @@ Bun
 ### 🏴 Babylon
 Realtime social and agent experimentation across the elizaOS ecosystem.
 
-[![Repository](https://img.shields.io/badge/elizaOS%2Fbabylon-REPOSITORY-F7931A?style=for-the-badge&logo=github&logoColor=black)](https://github.com/elizaOS/babylon)
+[![Repository](https://img.shields.io/badge/elizaOS%2Fbabylon-REPOSITORY-F7931A?style=for-the-badge&logo=github&logoColor=black&labelColor=0d0d0d)](https://github.com/elizaOS/babylon)
 ```text
 Realtime social systems
 Agent integrations
@@ -96,7 +96,7 @@ Platform architecture
 ### 🧠 SYMindX
 Experimental framework for autonomous agents with evolving internal state.
 
-[![Repository](https://img.shields.io/badge/SYMBaiEX%2FSYMindX-REPOSITORY-00F7FF?style=for-the-badge&logo=github&logoColor=black)](https://github.com/symbaiex/symindx)
+[![Repository](https://img.shields.io/badge/SYMBaiEX%2FSYMindX-REPOSITORY-00F7FF?style=for-the-badge&logo=github&logoColor=black&labelColor=0d0d0d)](https://github.com/symbaiex/symindx)
 ```text
 Memory
 Goals
@@ -163,33 +163,76 @@ Agent + crypto
 ---
 ## ◈ TECHNICAL STACK
 
-<div align="left">
-
 **AI / AGENTS**  
-`elizaOS` · `OpenAI` · `Anthropic` · `DeepSeek` · `Ollama` · `RAG` · `pgvector` · `MCP` · `Agent Orchestration` · `Tool Calling` · `Structured Outputs` · `Memory Systems`
+![elizaOS](https://img.shields.io/badge/elizaOS-00F7FF?style=flat-square&logo=github&logoColor=black)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
+![Anthropic](https://img.shields.io/badge/Anthropic-191919?style=flat-square&logo=anthropic&logoColor=white)
+![DeepSeek](https://img.shields.io/badge/DeepSeek-536AF5?style=flat-square&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG-FF2D78?style=flat-square)
+![MCP](https://img.shields.io/badge/MCP-F7931A?style=flat-square)
+![Agent Orchestration](https://img.shields.io/badge/Agent_Orchestration-00F7FF?style=flat-square&logoColor=black)
+![Tool Calling](https://img.shields.io/badge/Tool_Calling-FF2D78?style=flat-square)
+![Structured Outputs](https://img.shields.io/badge/Structured_Outputs-F7931A?style=flat-square)
+![Memory Systems](https://img.shields.io/badge/Memory_Systems-00F7FF?style=flat-square&logoColor=black)
 
 **LANGUAGES**  
-`TypeScript` · `JavaScript` · `Python` · `Rust` · `SQL`
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-336791?style=flat-square)
 
 **FRONTEND / INTERACTIVE**  
-`React` · `Next.js` · `Nuxt` · `Three.js` · `Tailwind CSS` · `Realtime UI`
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![Nuxt](https://img.shields.io/badge/Nuxt-00DC82?style=flat-square&logo=nuxt&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Realtime UI](https://img.shields.io/badge/Realtime_UI-FF2D78?style=flat-square)
 
 **BACKEND / RUNTIME**  
-`Node.js` · `Bun` · `Fastify` · `REST APIs` · `Webhooks` · `Background Jobs` · `Workflow Engines`
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=nodedotjs&logoColor=white)
+![Bun](https://img.shields.io/badge/Bun-F9F1E1?style=flat-square&logo=bun&logoColor=black)
+![Fastify](https://img.shields.io/badge/Fastify-000000?style=flat-square&logo=fastify&logoColor=white)
+![REST APIs](https://img.shields.io/badge/REST_APIs-00F7FF?style=flat-square&logoColor=black)
+![Webhooks](https://img.shields.io/badge/Webhooks-FF2D78?style=flat-square)
+![Background Jobs](https://img.shields.io/badge/Background_Jobs-F7931A?style=flat-square)
+![Workflow Engines](https://img.shields.io/badge/Workflow_Engines-00F7FF?style=flat-square&logoColor=black)
 
 **DATA / STATE**  
-`PostgreSQL` · `Supabase` · `Redis` · `Upstash` · `SQLite` · `pgvector` · `Convex` · `RabbitMQ`
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
+![Upstash](https://img.shields.io/badge/Upstash-00E9A3?style=flat-square&logoColor=black)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
+![pgvector](https://img.shields.io/badge/pgvector-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Convex](https://img.shields.io/badge/Convex-EE342F?style=flat-square&logoColor=white)
+![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat-square&logo=rabbitmq&logoColor=white)
 
 **INFRASTRUCTURE**  
-`Docker` · `GitHub Actions` · `Vercel` · `Turborepo` · `WSL2` · `CI/CD`
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![Turborepo](https://img.shields.io/badge/Turborepo-EF4444?style=flat-square&logo=turborepo&logoColor=white)
+![WSL2](https://img.shields.io/badge/WSL2-0078D4?style=flat-square&logo=windows&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-F7931A?style=flat-square)
 
 **WEB3**  
-`Solana` · `Anchor` · `Web3.js` · `Smart Contracts` · `NFT / Token Systems`
+![Solana](https://img.shields.io/badge/Solana-9945FF?style=flat-square&logo=solana&logoColor=white)
+![Anchor](https://img.shields.io/badge/Anchor-9945FF?style=flat-square)
+![Web3.js](https://img.shields.io/badge/Web3.js-F16822?style=flat-square&logo=web3dotjs&logoColor=white)
+![Smart Contracts](https://img.shields.io/badge/Smart_Contracts-00F7FF?style=flat-square&logoColor=black)
+![NFT / Token Systems](https://img.shields.io/badge/NFT_%2F_Token_Systems-FF2D78?style=flat-square)
 
-**DEVELOPER TOOLING**  
-`MCP Servers` · `Plugin Architectures` · `API Integrations` · `Workflow Automation` · `Cursor` · `Codex` · `Local Models`
-
-</div>
+**DEVELOPER TOOLING / AI WORKFLOW**  
+![MCP Servers](https://img.shields.io/badge/MCP_Servers-F7931A?style=flat-square)
+![Plugin Architectures](https://img.shields.io/badge/Plugin_Architectures-00F7FF?style=flat-square&logoColor=black)
+![API Integrations](https://img.shields.io/badge/API_Integrations-FF2D78?style=flat-square)
+![Workflow Automation](https://img.shields.io/badge/Workflow_Automation-F7931A?style=flat-square)
+![Cursor](https://img.shields.io/badge/Cursor-000000?style=flat-square&logoColor=white)
+![Codex](https://img.shields.io/badge/Codex-412991?style=flat-square&logo=openai&logoColor=white)
+![Local Models](https://img.shields.io/badge/Local_Models-00F7FF?style=flat-square&logoColor=black)
 
 ---
 ## ◈ CURRENT SIGNAL
