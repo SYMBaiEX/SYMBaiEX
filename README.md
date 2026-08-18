@@ -26,13 +26,31 @@ WALLET-LINKING-END -->
 
 <br/>
 
-[![GitHub](https://img.shields.io/badge/GitHub-SYMBaiEX-181717?style=flat-square&logo=github)](https://github.com/symbaiex)
+![Profile Views](https://komarev.com/ghpvc/?username=symbaiex&color=FF2D78&style=flat-square&label=VISITORS)
+[![GitHub followers](https://img.shields.io/github/followers/symbaiex?style=flat-square&color=00F7FF&labelColor=0d0d0d&label=NETWORK)](https://github.com/symbaiex)
 [![Website](https://img.shields.io/badge/symbaiex.com-FF2D78?style=flat-square&logo=googlechrome&logoColor=white)](https://symbaiex.com)
 [![X](https://img.shields.io/badge/@SYMBiEX-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/symbiex)
 [![Email](https://img.shields.io/badge/Email-00F7FF?style=flat-square&logo=gmail&logoColor=black)](mailto:solsymbaiex@gmail.com)
 [![elizaOS](https://img.shields.io/badge/elizaOS-Contributor-F7931A?style=flat-square&logo=github&logoColor=black)](https://github.com/elizaOS)
 
 </div>
+
+---
+
+## ◈ ENGINEERING ACTIVITY
+
+<div align="center">
+
+<a href="https://github.com/symbaiex"><img width="49%" src="./profile/stats.svg" alt="SYMBaiEX GitHub statistics"/></a>
+<a href="https://github.com/symbaiex"><img width="49%" src="./profile/languages.svg" alt="SYMBaiEX language statistics"/></a>
+
+<br/>
+
+<img width="98%" src="./profile/streak.svg" alt="SYMBaiEX contribution activity"/>
+
+</div>
+
+<sub>Metrics are generated from GitHub data by this profile repository and refreshed automatically.</sub>
 
 ---
 
@@ -244,23 +262,6 @@ Agent + crypto
 ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
 
 </div>
-
----
-
-## ◈ ENGINEERING ACTIVITY
-
-<div align="center">
-
-<a href="https://github.com/symbaiex"><img width="49%" src="./profile/stats.svg" alt="SYMBaiEX GitHub statistics"/></a>
-<a href="https://github.com/symbaiex"><img width="49%" src="./profile/languages.svg" alt="SYMBaiEX language statistics"/></a>
-
-<br/>
-
-<img width="98%" src="./profile/streak.svg" alt="SYMBaiEX contribution activity"/>
-
-</div>
-
-<sub>Metrics are generated from GitHub data by this profile repository and refreshed automatically.</sub>
 
 ---
 
