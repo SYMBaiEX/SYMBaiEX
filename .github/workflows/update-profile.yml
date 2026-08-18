@@ -1,0 +1,96 @@
+name: Update profile metrics
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-profile.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate profile SVGs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: SYMBaiEX
+        run: |
+          python - <<'PY'
+          import os, json, urllib.request, urllib.parse, datetime, html
+          from collections import Counter
+
+          token=os.environ['GH_TOKEN']; user=os.environ['GH_USER']
+          headers={'Authorization':f'Bearer {token}','User-Agent':'symbaiex-profile','Accept':'application/vnd.github+json'}
+          def get(url):
+              r=urllib.request.Request(url,headers=headers)
+              with urllib.request.urlopen(r) as f: return json.load(f)
+          def post(url,payload):
+              data=json.dumps(payload).encode(); r=urllib.request.Request(url,data=data,headers={**headers,'Content-Type':'application/json'})
+              with urllib.request.urlopen(r) as f: return json.load(f)
+          def esc(s): return html.escape(str(s))
+          def card(title, lines, accent='#00F7FF', width=520, height=170):
+              rows=''.join(f'<text x="28" y="{66+i*25}" fill="#c9d1d9" font-size="15" font-family="monospace">{esc(t)}</text>' for i,t in enumerate(lines))
+              return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}"><rect width="100%" height="100%" rx="14" fill="#0d0d0d" stroke="#222"/><text x="28" y="34" fill="{accent}" font-size="20" font-weight="700" font-family="Arial, sans-serif">{esc(title)}</text>{rows}</svg>'''
+
+          repos=[]
+          for page in range(1,4):
+              batch=get(f'https://api.github.com/users/{user}/repos?per_page=100&page={page}&sort=updated')
+              repos += batch
+              if len(batch)<100: break
+          own=[r for r in repos if not r.get('fork')]
+          stars=sum(r.get('stargazers_count',0) for r in own)
+          forks=sum(r.get('forks_count',0) for r in own)
+          followers=get(f'https://api.github.com/users/{user}').get('followers',0)
+          os.makedirs('profile',exist_ok=True)
+          open('profile/stats.svg','w').write(card('SYMBaiEX / GitHub',[
+              f'Public repositories   {len(repos)}', f'Original repositories {len(own)}', f'Stars across repos     {stars}', f'Forks across repos     {forks}', f'Followers              {followers}'
+          ], '#00F7FF', 520, 205))
+
+          langs=Counter()
+          for r in own[:40]:
+              try:
+                  for k,v in get(r['languages_url']).items(): langs[k]+=v
+              except Exception: pass
+          total=sum(langs.values()) or 1
+          top=langs.most_common(6)
+          lang_lines=[f'{k:<16} {v/total*100:5.1f}%' for k,v in top]
+          open('profile/languages.svg','w').write(card('Languages by repository bytes',lang_lines,'#F7931A',520,190))
+
+          q='''query($login:String!){user(login:$login){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount}}}}}}'''
+          data=post('https://api.github.com/graphql',{'query':q,'variables':{'login':user}})
+          cal=data['data']['user']['contributionsCollection']['contributionCalendar']
+          days=[]
+          for w in cal['weeks']:
+              days += w['contributionDays']
+          counts={datetime.date.fromisoformat(d['date']):d['contributionCount'] for d in days}
+          today=datetime.date.today(); d=today
+          if counts.get(d,0)==0: d-=datetime.timedelta(days=1)
+          cur=0
+          while counts.get(d,0)>0:
+              cur+=1; d-=datetime.timedelta(days=1)
+          longest=0; run=0
+          for day in sorted(counts):
+              if counts[day]>0: run+=1; longest=max(longest,run)
+              else: run=0
+          open('profile/streak.svg','w').write(card('Contribution signal',[
+              f'Contributions (12 mo)  {cal["totalContributions"]}', f'Current streak         {cur} days', f'Longest streak         {longest} days', f'Updated                {datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")}'
+          ], '#FF2D78', 1060, 170))
+          PY
+      - name: Commit refreshed metrics
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add profile/*.svg
+          git diff --cached --quiet && exit 0
+          git commit -m 'chore: refresh profile metrics'
+          git push
