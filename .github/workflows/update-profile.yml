@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Refresh original profile cards
+      - name: Refresh profile activity cards
         shell: bash
         run: |
           set -u
@@ -52,8 +52,6 @@ jobs:
             fi
           }
 
-          fetch_card 'https://github-readme-stats.vercel.app/api?username=symbaiex&show_icons=true&hide_border=true&title_color=00F7FF&icon_color=FF2D78&text_color=c9d1d9&bg_color=0d0d0d&count_private=true&include_all_commits=true' 'profile/stats.svg'
-          fetch_card 'https://github-readme-stats.vercel.app/api/top-langs/?username=symbaiex&layout=compact&hide_border=true&title_color=F7931A&text_color=c9d1d9&bg_color=0d0d0d&count_private=true&langs_count=8' 'profile/languages.svg'
           fetch_card 'https://github-readme-streak-stats.herokuapp.com/?user=symbaiex&hide_border=true&stroke=1a1a2e&ring=FF2D78&fire=F7931A&currStreakLabel=00F7FF&sideLabels=FF2D78&sideNums=ffffff&currStreakNum=ffffff&dates=666666&background=0d0d0d' 'profile/streak.svg'
           fetch_card 'https://github-readme-activity-graph.vercel.app/graph?username=symbaiex&theme=tokyo-night&hide_border=true&color=00F7FF&line=FF2D78&point=F7931A&bg_color=0d0d0d&area=true&area_color=00F7FF' 'profile/activity-graph.svg'
 
@@ -68,8 +66,8 @@ jobs:
           text = path.read_text()
           cache_key = str(int(time.time()))
 
-          for name in ('stats', 'languages', 'streak', 'activity-graph'):
-              pattern = rf'(\./profile/{re.escape(name)}\.svg)(?:\?v=[^"\s]+)?'
+          for name in ('streak', 'activity-graph'):
+              pattern = rf'(https://raw\.githubusercontent\.com/SYMBaiEX/SYMBaiEX/main/profile/{re.escape(name)}\.svg)(?:\?v=[^"\s]+)?'
               text = re.sub(pattern, rf'\1?v={cache_key}', text)
 
           path.write_text(text)
@@ -80,7 +78,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md profile/*.svg 2>/dev/null || true
+          git add README.md profile/streak.svg profile/activity-graph.svg 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -m 'chore: refresh profile activity cards'
           git push
