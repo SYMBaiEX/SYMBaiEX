@@ -41,11 +41,11 @@ WALLET-LINKING-END -->
 
 <div align="center">
 
-<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/main/profile/streak.svg?v=20260818b" alt="SYMBaiEX GitHub streak" />
+<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/main/profile/streak.svg?v=1787073765" alt="SYMBaiEX GitHub streak" />
 
 <br/>
 
-<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/main/profile/activity-graph.svg?v=20260818b" alt="SYMBaiEX contribution activity" />
+<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/main/profile/activity-graph.svg?v=1787073765" alt="SYMBaiEX contribution activity" />
 
 </div>
 
