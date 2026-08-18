@@ -57,11 +57,30 @@ jobs:
           fetch_card 'https://github-readme-streak-stats.herokuapp.com/?user=symbaiex&hide_border=true&stroke=1a1a2e&ring=FF2D78&fire=F7931A&currStreakLabel=00F7FF&sideLabels=FF2D78&sideNums=ffffff&currStreakNum=ffffff&dates=666666&background=0d0d0d' 'profile/streak.svg'
           fetch_card 'https://github-readme-activity-graph.vercel.app/graph?username=symbaiex&theme=tokyo-night&hide_border=true&color=00F7FF&line=FF2D78&point=F7931A&bg_color=0d0d0d&area=true&area_color=00F7FF' 'profile/activity-graph.svg'
 
+      - name: Bust README image cache
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, time
+
+          path = Path('README.md')
+          text = path.read_text()
+          cache_key = str(int(time.time()))
+
+          for name in ('stats', 'languages', 'streak', 'activity-graph'):
+              pattern = rf'(\./profile/{re.escape(name)}\.svg)(?:\?v=[^"\s]+)?'
+              text = re.sub(pattern, rf'\1?v={cache_key}', text)
+
+          path.write_text(text)
+          print(f'Updated README activity cache key to {cache_key}')
+          PY
+
       - name: Commit refreshed cards
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add profile/*.svg 2>/dev/null || true
+          git add README.md profile/*.svg 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -m 'chore: refresh profile activity cards'
           git push
