@@ -161,23 +161,34 @@ Agent + crypto
 </div>
 
 ---
-## ◈ ENGINEERING STACK
+## ◈ TECHNICAL STACK
+
 <div align="left">
 
-### AI & AGENTS
-![elizaOS](https://img.shields.io/badge/elizaOS-00F7FF?style=flat-square&logoColor=black) ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white) ![Anthropic](https://img.shields.io/badge/Anthropic-191919?style=flat-square&logo=anthropic&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+**AI / AGENTS**  
+`elizaOS` · `OpenAI` · `Anthropic` · `DeepSeek` · `Ollama` · `RAG` · `pgvector` · `MCP` · `Agent Orchestration` · `Tool Calling` · `Structured Outputs` · `Memory Systems`
 
-### APPLICATION
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white) ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white)
+**LANGUAGES**  
+`TypeScript` · `JavaScript` · `Python` · `Rust` · `SQL`
 
-### BACKEND & DATA
-![Bun](https://img.shields.io/badge/Bun-F9F1E1?style=flat-square&logo=bun&logoColor=black) ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
+**FRONTEND / INTERACTIVE**  
+`React` · `Next.js` · `Nuxt` · `Three.js` · `Tailwind CSS` · `Realtime UI`
 
-### INFRASTRUCTURE
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white) ![Turborepo](https://img.shields.io/badge/Turborepo-EF4444?style=flat-square&logo=turborepo&logoColor=white)
+**BACKEND / RUNTIME**  
+`Node.js` · `Bun` · `Fastify` · `REST APIs` · `Webhooks` · `Background Jobs` · `Workflow Engines`
 
-### WEB3
-![Solana](https://img.shields.io/badge/Solana-9945FF?style=flat-square&logo=solana&logoColor=white) ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
+**DATA / STATE**  
+`PostgreSQL` · `Supabase` · `Redis` · `Upstash` · `SQLite` · `pgvector` · `Convex` · `RabbitMQ`
+
+**INFRASTRUCTURE**  
+`Docker` · `GitHub Actions` · `Vercel` · `Turborepo` · `WSL2` · `CI/CD`
+
+**WEB3**  
+`Solana` · `Anchor` · `Web3.js` · `Smart Contracts` · `NFT / Token Systems`
+
+**DEVELOPER TOOLING**  
+`MCP Servers` · `Plugin Architectures` · `API Integrations` · `Workflow Automation` · `Cursor` · `Codex` · `Local Models`
+
 </div>
 
 ---
