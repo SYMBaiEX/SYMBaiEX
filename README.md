@@ -26,7 +26,7 @@ WALLET-LINKING-END -->
 
 <br/>
 
-<img src="https://komarev.com/ghpvc/?username=symbaiex&label=VISITORS&color=FF2D78&style=flat-square" alt="Profile views" />
+<img src="https://komarev.com/ghpvc/?username=symbaiex&amp;label=VISITORS&amp;color=FF2D78&amp;style=flat-square" alt="Profile views" />
 <a href="https://github.com/symbaiex"><img src="https://img.shields.io/github/followers/symbaiex?style=flat-square&color=00F7FF&labelColor=0d0d0d&label=NETWORK" alt="GitHub followers" /></a>
 <a href="https://x.com/symbiex"><img src="https://img.shields.io/badge/@SYMBiEX-F7931A?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
 <a href="https://symbaiex.com"><img src="https://img.shields.io/badge/symbaiex.com-FF2D78?style=flat-square&logoColor=white" alt="Website" /></a>
