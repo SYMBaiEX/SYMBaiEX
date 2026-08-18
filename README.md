@@ -15,7 +15,7 @@ WALLET-LINKING-END -->
 ### AI Software Engineer · Agent Systems · Full-Stack Product Builder
 <img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech+Mono&size=15&duration=3200&pause=900&color=00F7FF&center=true&vCenter=true&width=760&lines=Building+production+AI+systems;Contributing+to+elizaOS;Agents+%E2%80%A2+Full-stack+%E2%80%A2+Realtime+systems+%E2%80%A2+Developer+tooling;Turning+ambitious+ideas+into+working+software" />
 <br/>
-<img src="https://komarev.com/ghpvc/?username=symbaiex&amp;label=VISITORS&amp;color=FF2D78&amp;style=flat-square" alt="Profile views" />
+<img src="https://komarev.com/ghpvc/?username=symbaiex-profile-views-v2&amp;base=3916&amp;label=VISITORS&amp;color=FF2D78&amp;style=flat-square" alt="Profile views" />
 <a href="https://github.com/symbaiex"><img src="https://img.shields.io/github/followers/symbaiex?style=flat-square&color=00F7FF&labelColor=0d0d0d&label=NETWORK" alt="GitHub followers" /></a>
 <a href="https://x.com/symbiex"><img src="https://img.shields.io/badge/@SYMBiEX-F7931A?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
 <a href="https://symbaiex.com"><img src="https://img.shields.io/badge/symbaiex.com-FF2D78?style=flat-square&logoColor=white" alt="Website" /></a>
