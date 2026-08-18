@@ -26,7 +26,7 @@ WALLET-LINKING-END -->
 
 <br/>
 
-![Profile Views](https://komarev.com/ghpvc/?username=symbaiex&color=FF2D78&style=flat-square&label=VISITORS)
+<img src="https://komarev.com/ghpvc/?username=symbaiex&label=VISITORS&color=FF2D78&style=flat-square" alt="Profile views" />
 [![GitHub followers](https://img.shields.io/github/followers/symbaiex?style=flat-square&color=00F7FF&labelColor=0d0d0d&label=NETWORK)](https://github.com/symbaiex)
 [![X](https://img.shields.io/badge/@SYMBiEX-F7931A?style=flat-square&logo=x&logoColor=white)](https://x.com/symbiex)
 [![Website](https://img.shields.io/badge/symbaiex.com-FF2D78?style=flat-square&logoColor=white)](https://symbaiex.com)
@@ -41,24 +41,15 @@ WALLET-LINKING-END -->
 
 <div align="center">
 
-<img height="155em" src="./profile/stats.svg" />
-<img height="155em" src="./profile/languages.svg" />
+<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/main/profile/streak.svg?v=20260818b" alt="SYMBaiEX GitHub streak" />
+
+<br/>
+
+<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/main/profile/activity-graph.svg?v=20260818b" alt="SYMBaiEX contribution activity" />
 
 </div>
 
-<div align="center">
-
-<img width="96%" src="./profile/streak.svg" />
-
-</div>
-
-<div align="center">
-
-<img width="96%" src="./profile/activity-graph.svg" />
-
-</div>
-
-<sub>Original-style cards are cached into this repository and refreshed automatically every 6 hours.</sub>
+<sub>Activity cards are cached into this repository and refreshed automatically every 6 hours.</sub>
 
 ---
 
