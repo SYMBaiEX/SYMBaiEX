@@ -27,11 +27,11 @@ WALLET-LINKING-END -->
 <br/>
 
 <img src="https://komarev.com/ghpvc/?username=symbaiex&label=VISITORS&color=FF2D78&style=flat-square" alt="Profile views" />
-[![GitHub followers](https://img.shields.io/github/followers/symbaiex?style=flat-square&color=00F7FF&labelColor=0d0d0d&label=NETWORK)](https://github.com/symbaiex)
-[![X](https://img.shields.io/badge/@SYMBiEX-F7931A?style=flat-square&logo=x&logoColor=white)](https://x.com/symbiex)
-[![Website](https://img.shields.io/badge/symbaiex.com-FF2D78?style=flat-square&logoColor=white)](https://symbaiex.com)
-[![elizaOS](https://img.shields.io/badge/elizaOS-contributor-00F7FF?style=flat-square&logo=github&logoColor=black)](https://github.com/elizaOS)
-[![Tip](https://img.shields.io/badge/tip-crypto-F7931A?style=flat-square&logo=bitcoin&logoColor=white)](https://tip.md/SYMBaiEX)
+<a href="https://github.com/symbaiex"><img src="https://img.shields.io/github/followers/symbaiex?style=flat-square&color=00F7FF&labelColor=0d0d0d&label=NETWORK" alt="GitHub followers" /></a>
+<a href="https://x.com/symbiex"><img src="https://img.shields.io/badge/@SYMBiEX-F7931A?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
+<a href="https://symbaiex.com"><img src="https://img.shields.io/badge/symbaiex.com-FF2D78?style=flat-square&logoColor=white" alt="Website" /></a>
+<a href="https://github.com/elizaOS"><img src="https://img.shields.io/badge/elizaOS-contributor-00F7FF?style=flat-square&logo=github&logoColor=black" alt="elizaOS contributor" /></a>
+<a href="https://tip.md/SYMBaiEX"><img src="https://img.shields.io/badge/tip-crypto-F7931A?style=flat-square&logo=bitcoin&logoColor=white" alt="Tip" /></a>
 
 </div>
 
