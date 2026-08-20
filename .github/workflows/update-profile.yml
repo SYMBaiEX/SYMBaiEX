@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate live streak card
+      - name: Generate live all-time streak card
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USER: SYMBaiEX
@@ -34,12 +34,43 @@ jobs:
           token = os.environ['GH_TOKEN']
           user = os.environ['GH_USER']
 
-          query = '''
+          def graphql(query, variables):
+              payload = json.dumps({'query': query, 'variables': variables}).encode()
+              request = urllib.request.Request(
+                  'https://api.github.com/graphql',
+                  data=payload,
+                  headers={
+                      'Authorization': f'Bearer {token}',
+                      'Content-Type': 'application/json',
+                      'User-Agent': 'SYMBaiEX-profile',
+                  },
+              )
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  result = json.load(response)
+              if result.get('errors'):
+                  raise RuntimeError(result['errors'])
+              return result['data']
+
+          years_query = '''
           query($login: String!) {
             user(login: $login) {
               contributionsCollection {
+                contributionYears
+              }
+            }
+          }
+          '''
+
+          years_data = graphql(years_query, {'login': user})
+          years = sorted(years_data['user']['contributionsCollection']['contributionYears'])
+          if not years:
+              years = [datetime.now(timezone.utc).year]
+
+          calendar_query = '''
+          query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+              contributionsCollection(from: $from, to: $to) {
                 contributionCalendar {
-                  totalContributions
                   weeks {
                     contributionDays {
                       date
@@ -52,29 +83,27 @@ jobs:
           }
           '''
 
-          payload = json.dumps({"query": query, "variables": {"login": user}}).encode()
-          request = urllib.request.Request(
-              'https://api.github.com/graphql',
-              data=payload,
-              headers={
-                  'Authorization': f'Bearer {token}',
-                  'Content-Type': 'application/json',
-                  'User-Agent': 'SYMBaiEX-profile',
-              },
-          )
+          counts = {}
+          for year in years:
+              from_iso = f'{year}-01-01T00:00:00Z'
+              to_iso = f'{year}-12-31T23:59:59Z'
+              data = graphql(calendar_query, {'login': user, 'from': from_iso, 'to': to_iso})
+              calendar = data['user']['contributionsCollection']['contributionCalendar']
+              for week in calendar['weeks']:
+                  for day in week['contributionDays']:
+                      d = date.fromisoformat(day['date'])
+                      # Calendar weeks can include boundary days outside the requested year.
+                      # Keep only the year currently being requested to avoid double counting.
+                      if d.year == year:
+                          counts[d] = int(day['contributionCount'])
 
-          with urllib.request.urlopen(request, timeout=30) as response:
-              result = json.load(response)
-
-          if result.get('errors'):
-              raise RuntimeError(result['errors'])
-
-          calendar = result['data']['user']['contributionsCollection']['contributionCalendar']
-          days = [day for week in calendar['weeks'] for day in week['contributionDays']]
-          counts = {date.fromisoformat(day['date']): int(day['contributionCount']) for day in days}
           ordered = sorted(counts)
-
           today = datetime.now(timezone.utc).date()
+
+          # Total shown on the card is now true all-time history returned by GitHub,
+          # not the default rolling contributionCollection window.
+          total = sum(counts.values())
+
           cursor = today
           # GitHub can report today's contribution total late. If today is still zero,
           # treat yesterday as the end of the current streak rather than breaking it.
@@ -94,10 +123,12 @@ jobs:
           run = 0
           run_start = None
           previous = None
+
           for d in ordered:
               if previous is not None and d != previous + timedelta(days=1):
                   run = 0
                   run_start = None
+
               if counts[d] > 0:
                   if run == 0:
                       run_start = d
@@ -111,9 +142,7 @@ jobs:
                   run_start = None
               previous = d
 
-          total = int(calendar['totalContributions'])
-          range_start = ordered[0] if ordered else today
-          range_end = ordered[-1] if ordered else today
+          first_active = next((d for d in ordered if counts[d] > 0), ordered[0] if ordered else today)
 
           def fmt_range(start, end):
               if not start or not end:
@@ -124,7 +153,7 @@ jobs:
 
           current_range = fmt_range(current_start, current_end)
           longest_range = fmt_range(longest_start, longest_end)
-          total_range = f'{range_start.strftime("%b %-d, %Y")} - Present'
+          total_range = f'{first_active.strftime("%b %-d, %Y")} - Present'
 
           svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 390" width="990" height="390">
             <rect width="990" height="390" rx="9" fill="#0d0d0d"/>
@@ -147,7 +176,10 @@ jobs:
           </svg>'''
 
           Path('profile/streak.svg').write_text(svg)
-          print(f'Generated live streak card: total={total}, current={current_streak}, longest={longest_streak}')
+          print(
+              f'Generated all-time live streak card across years {years}: '
+              f'total={total}, current={current_streak}, longest={longest_streak}'
+          )
           PY
 
       - name: Refresh contribution graph
