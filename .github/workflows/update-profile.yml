@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Generate live all-time streak card
         env:
@@ -85,28 +87,23 @@ jobs:
 
           counts = {}
           for year in years:
-              from_iso = f'{year}-01-01T00:00:00Z'
-              to_iso = f'{year}-12-31T23:59:59Z'
-              data = graphql(calendar_query, {'login': user, 'from': from_iso, 'to': to_iso})
+              data = graphql(calendar_query, {
+                  'login': user,
+                  'from': f'{year}-01-01T00:00:00Z',
+                  'to': f'{year}-12-31T23:59:59Z',
+              })
               calendar = data['user']['contributionsCollection']['contributionCalendar']
               for week in calendar['weeks']:
                   for day in week['contributionDays']:
                       d = date.fromisoformat(day['date'])
-                      # Calendar weeks can include boundary days outside the requested year.
-                      # Keep only the year currently being requested to avoid double counting.
                       if d.year == year:
                           counts[d] = int(day['contributionCount'])
 
           ordered = sorted(counts)
           today = datetime.now(timezone.utc).date()
-
-          # Total shown on the card is now true all-time history returned by GitHub,
-          # not the default rolling contributionCollection window.
           total = sum(counts.values())
 
           cursor = today
-          # GitHub can report today's contribution total late. If today is still zero,
-          # treat yesterday as the end of the current streak rather than breaking it.
           if counts.get(cursor, 0) == 0:
               cursor -= timedelta(days=1)
 
@@ -123,12 +120,10 @@ jobs:
           run = 0
           run_start = None
           previous = None
-
           for d in ordered:
               if previous is not None and d != previous + timedelta(days=1):
                   run = 0
                   run_start = None
-
               if counts[d] > 0:
                   if run == 0:
                       run_start = d
@@ -151,35 +146,25 @@ jobs:
                   return f'{start.strftime("%b %-d")} - {end.strftime("%b %-d, %Y")}'
               return f'{start.strftime("%b %-d, %Y")} - {end.strftime("%b %-d, %Y")}'
 
-          current_range = fmt_range(current_start, current_end)
-          longest_range = fmt_range(longest_start, longest_end)
-          total_range = f'{first_active.strftime("%b %-d, %Y")} - Present'
-
           svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 390" width="990" height="390">
             <rect width="990" height="390" rx="9" fill="#0d0d0d"/>
             <line x1="330" y1="56" x2="330" y2="340" stroke="#1a1a2e" stroke-width="2"/>
             <line x1="660" y1="56" x2="660" y2="340" stroke="#1a1a2e" stroke-width="2"/>
-
             <text x="165" y="160" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Ubuntu, sans-serif" font-size="64" font-weight="700">{total:,}</text>
             <text x="165" y="225" text-anchor="middle" fill="#ff2d78" font-family="Segoe UI, Ubuntu, sans-serif" font-size="30">Total Contributions</text>
-            <text x="165" y="285" text-anchor="middle" fill="#666666" font-family="Segoe UI, Ubuntu, sans-serif" font-size="20">{total_range}</text>
-
+            <text x="165" y="285" text-anchor="middle" fill="#666666" font-family="Segoe UI, Ubuntu, sans-serif" font-size="20">{first_active.strftime("%b %-d, %Y")} - Present</text>
             <circle cx="495" cy="142" r="78" fill="none" stroke="#ff2d78" stroke-width="12"/>
             <path d="M495 45 C510 64 512 78 500 91 C487 82 484 68 495 45 Z M495 62 C482 83 469 94 469 114 C469 136 481 153 495 160 C509 153 521 136 521 114 C521 96 512 81 504 72 C505 93 497 104 488 107 C489 89 495 75 495 62 Z" fill="#f7931a" transform="translate(0,-39) scale(0.62) translate(303,55)"/>
             <text x="495" y="164" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Ubuntu, sans-serif" font-size="64" font-weight="700">{current_streak}</text>
             <text x="495" y="250" text-anchor="middle" fill="#00f7ff" font-family="Segoe UI, Ubuntu, sans-serif" font-size="30" font-weight="700">Current Streak</text>
-            <text x="495" y="305" text-anchor="middle" fill="#666666" font-family="Segoe UI, Ubuntu, sans-serif" font-size="20">{current_range}</text>
-
+            <text x="495" y="305" text-anchor="middle" fill="#666666" font-family="Segoe UI, Ubuntu, sans-serif" font-size="20">{fmt_range(current_start, current_end)}</text>
             <text x="825" y="160" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Ubuntu, sans-serif" font-size="64" font-weight="700">{longest_streak}</text>
             <text x="825" y="225" text-anchor="middle" fill="#ff2d78" font-family="Segoe UI, Ubuntu, sans-serif" font-size="30">Longest Streak</text>
-            <text x="825" y="285" text-anchor="middle" fill="#666666" font-family="Segoe UI, Ubuntu, sans-serif" font-size="20">{longest_range}</text>
+            <text x="825" y="285" text-anchor="middle" fill="#666666" font-family="Segoe UI, Ubuntu, sans-serif" font-size="20">{fmt_range(longest_start, longest_end)}</text>
           </svg>'''
 
           Path('profile/streak.svg').write_text(svg)
-          print(
-              f'Generated all-time live streak card across years {years}: '
-              f'total={total}, current={current_streak}, longest={longest_streak}'
-          )
+          print(f'Generated streak: total={total}, current={current_streak}, longest={longest_streak}')
           PY
 
       - name: Refresh contribution graph
@@ -203,32 +188,48 @@ jobs:
             sleep $((attempt * 4))
           done
 
-          echo "Contribution graph renderer unavailable; preserving existing $dest"
+          echo "Contribution graph unavailable; preserving existing $dest"
 
-      - name: Bust README image cache
+      - name: Commit generated activity assets
+        id: assets
         shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re, time
-
-          path = Path('README.md')
-          text = path.read_text()
-          cache_key = str(int(time.time()))
-
-          for name in ('streak', 'activity-graph'):
-              pattern = rf'(https://raw\.githubusercontent\.com/SYMBaiEX/SYMBaiEX/main/profile/{re.escape(name)}\.svg)(?:\?v=[^"\s]+)?'
-              text = re.sub(pattern, rf'\1?v={cache_key}', text)
-
-          path.write_text(text)
-          print(f'Updated README activity cache key to {cache_key}')
-          PY
-
-      - name: Commit refreshed cards
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md profile/streak.svg profile/activity-graph.svg 2>/dev/null || true
-          git diff --cached --quiet && exit 0
-          git commit -m 'chore: refresh profile activity cards'
-          git push
+          git add profile/streak.svg profile/activity-graph.svg 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: refresh profile activity assets'
+            git push
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Point README at immutable generated assets
+        env:
+          ASSET_SHA: ${{ steps.assets.outputs.sha }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          sha = os.environ['ASSET_SHA']
+          path = Path('README.md')
+          text = path.read_text()
+
+          for name in ('streak', 'activity-graph'):
+              pattern = rf'https://raw\.githubusercontent\.com/SYMBaiEX/SYMBaiEX/[^/]+/profile/{re.escape(name)}\.svg(?:\?v=[^"\s]+)?'
+              replacement = f'https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/{sha}/profile/{name}.svg'
+              text = re.sub(pattern, replacement, text)
+
+          path.write_text(text)
+          print(f'Pinned README activity assets to {sha}')
+          PY
+
+      - name: Commit README asset references
+        shell: bash
+        run: |
+          git add README.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: point profile at latest activity assets'
+            git push
+          fi
