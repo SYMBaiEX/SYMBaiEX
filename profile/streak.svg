@@ -2,7 +2,7 @@
   <rect width="990" height="390" rx="9" fill="#0d0d0d"/>
   <line x1="330" y1="56" x2="330" y2="340" stroke="#1a1a2e" stroke-width="2"/>
   <line x1="660" y1="56" x2="660" y2="340" stroke="#1a1a2e" stroke-width="2"/>
-  <text x="165" y="160" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Ubuntu, sans-serif" font-size="64" font-weight="700">10,209</text>
+  <text x="165" y="160" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Ubuntu, sans-serif" font-size="64" font-weight="700">10,214</text>
   <text x="165" y="225" text-anchor="middle" fill="#ff2d78" font-family="Segoe UI, Ubuntu, sans-serif" font-size="30">Total Contributions</text>
   <text x="165" y="285" text-anchor="middle" fill="#666666" font-family="Segoe UI, Ubuntu, sans-serif" font-size="20">Dec 18, 2024 - Present</text>
   <circle cx="495" cy="142" r="78" fill="none" stroke="#ff2d78" stroke-width="12"/>
