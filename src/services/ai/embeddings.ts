@@ -1,4 +1,5 @@
 import { config } from '../../config/env';
+import { rateLimiter } from './rateLimit';
 
 export interface EmbeddingsResponse {
   embeddings: number[];
@@ -11,6 +12,10 @@ export interface EmbeddingsResponse {
 
 export async function getEmbeddings(input: string): Promise<EmbeddingsResponse> {
   try {
+    if (!rateLimiter.canMakeRequest()) {
+      throw new Error('Rate limit exceeded. Please wait before trying again.');
+    }
+
     const response = await fetch('https://api.galadriel.com/v1/embeddings', {
       method: 'POST',
       headers: {
@@ -26,6 +31,8 @@ export async function getEmbeddings(input: string): Promise<EmbeddingsResponse> 
     if (!response.ok) {
       throw new Error('Failed to get embeddings from Galadriel API');
     }
+
+    rateLimiter.incrementRequests();
 
     return await response.json();
   } catch (error) {
