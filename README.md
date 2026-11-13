@@ -26,9 +26,9 @@ WALLET-LINKING-END -->
 ---
 ## ◈ ACTIVITY MATRIX
 <div align="center">
-<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/f374836bc05ac6b315927f5794c06e63bb67860c/profile/streak.svg" alt="SYMBaiEX GitHub streak" />
+<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/6fad8d2ebae60a4c5735ab2bdbd686a087ac0217/profile/streak.svg" alt="SYMBaiEX GitHub streak" />
 <br/>
-<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/f374836bc05ac6b315927f5794c06e63bb67860c/profile/activity-graph.svg" alt="SYMBaiEX contribution activity" />
+<img width="96%" src="https://raw.githubusercontent.com/SYMBaiEX/SYMBaiEX/6fad8d2ebae60a4c5735ab2bdbd686a087ac0217/profile/activity-graph.svg" alt="SYMBaiEX contribution activity" />
 </div>
 <sub>Activity cards are cached into this repository and refreshed automatically every 6 hours.</sub>
 
